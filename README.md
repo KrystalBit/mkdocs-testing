@@ -29,4 +29,5 @@ npm run package
 npm run tauri dev
 ```
 
-API Key is generated on
+API Key is generated on the exchange website (add at least 1000 nonce).
+This app only requires permission to Query Ledger Entries.
