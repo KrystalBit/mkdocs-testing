@@ -40,3 +40,37 @@ export function throttledQueue(
       numRequestsPerInterval++
       void callback()
     }
+    if (queue.length) {
+      timeout = setTimeout(dequeue, interval)
+    } else {
+      timeout = undefined
+    }
+  }
+
+  return <Return = unknown>(
+    fn: () => Promise<Return> | Return
+  ): Promise<Return> =>
+    new Promise<Return>((resolve, reject) => {
+      const callback = () =>
+        Promise.resolve().then(fn).then(resolve).catch(reject)
+      const now = Date.now()
+      if (timeout === undefined && now - lastIntervalStart > interval) {
+        lastIntervalStart = now
+        numRequestsPerInterval = 0
+      }
+      if (numRequestsPerInterval++ < maxRequestsPerInterval) {
+        void callback()
+      } else {
+        queue.push(callback)
+        if (timeout === undefined) {
+          timeout = setTimeout(dequeue, lastIntervalStart + interval - now)
+        }
+      }
+    })
+}
+
+export const serialize = (msg: any) => {
+  try {
+    return JSON.stringify(msg)
+  } catch (err: any) {
+    co
