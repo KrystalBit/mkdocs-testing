@@ -73,4 +73,16 @@ export const serialize = (msg: any) => {
   try {
     return JSON.stringify(msg)
   } catch (err: any) {
-    co
+    console.error(err.trace)
+    console.error(msg)
+  }
+}
+
+export const deserialize = (msg: any) => {
+  try {
+    return JSON.parse(msg)
+  } catch (err: any) {
+    console.error(err.trace)
+    console.error(msg)
+  }
+}
