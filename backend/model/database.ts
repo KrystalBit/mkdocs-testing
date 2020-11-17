@@ -14,4 +14,39 @@ import viewHodl from '../sql/viewHodl.sql?raw'
 
 export let db: Database
 
-export const initDb
+export const initDb = (filename: string = 'data.db') => {
+  const homePath = path.join(homedir(), '.tentacle')
+  mkdirSync(homePath, { recursive: true })
+  const dbPath = path.join(homePath, filename)
+
+  db?.close(errorBack)
+  db = new Database(dbPath, errorBack)
+  db.exec(createKV)
+  db.exec(createLedgers)
+  db.exec(createAssetPairs)
+  db.exec(createPriceHistory)
+  db.exec(viewFiat)
+  db.exec(viewTransactions)
+  db.exec(viewSales)
+  db.exec(viewHodl)
+}
+
+export const getAll = async <T>(sql: string, params?: any) => {
+  return new Promise<Array<T>>((resolve, reject) => {
+    function callback(this: Statement, err: Error | null, rows: Array<T>) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(rows)
+      }
+    }
+
+    if (params !== undefined) {
+      db.all(sql, params, callback)
+    } else {
+      db.all(sql, callback)
+    }
+  })
+}
+
+export const run 
