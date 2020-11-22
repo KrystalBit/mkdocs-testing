@@ -49,4 +49,38 @@ export const getAll = async <T>(sql: string, params?: any) => {
   })
 }
 
-export const run 
+export const run = async (sql: string, params?: any) => {
+  return new Promise((resolve, reject) => {
+    function callback(this: RunResult, err: Error | null) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(this)
+      }
+    }
+
+    if (params !== undefined) {
+      db.run(sql, params, callback)
+    } else {
+      db.run(sql, callback)
+    }
+  })
+}
+
+export const get = async <T>(sql: string, params?: any) => {
+  return new Promise<T>((resolve, reject) => {
+    function callback(this: Statement, err: Error | null, row: T) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(row)
+      }
+    }
+
+    if (params !== undefined) {
+      db.get(sql, params, callback)
+    } else {
+      db.get(sql, callback)
+    }
+  })
+}
