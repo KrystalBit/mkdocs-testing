@@ -6,4 +6,10 @@ CREATE TABLE IF NOT EXISTS tradesHistory (
   time REAL NOT NULL,
   type TEXT NOT NULL,
   ordertype TEXT NOT NULL,
-  price REAL NOT 
+  price REAL NOT NULL,
+  cost REAL NOT NULL,
+  fee REAL NOT NULL,
+  vol REAL NOT NULL,
+  margin REAL NOT NULL,
+  misc TEXT NOT NULL
+);
