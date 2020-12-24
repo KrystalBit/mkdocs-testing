@@ -75,3 +75,39 @@ type BalanceTransactionType = {
   current_value: number
 }
 export const getBalanceTransactions = curryQuery<BalanceTransactionType>(
+  getBalanceTransactionsQuery
+)
+
+type CapitalGainsSummaryType = {
+  asset: string
+  amount: number
+  avg_buy_price: number
+  avg_sell_price: number
+  gainloss: number
+}
+
+export const getCapitalGainsSummary = curryQuery<CapitalGainsSummaryType>(
+  getCapitalGainsSummaryQuery
+)
+
+type CapitalGainsTotalType = {
+  total_gainloss: number
+}
+
+export const getCapitalGainsTotal = curryQuery<CapitalGainsTotalType>(
+  getCapitalGainsTotalQuery
+)
+
+type CapitalGainsTransactionType = {
+  asset: string
+  amount: number
+  buy_time: number
+  sell_time: number
+  holding_period: number
+  buy_price: number
+  sell_price: number
+  gainloss: number
+}
+
+export const getCapitalGainsTransactions =
+  curryQuery<CapitalGainsTransactionType>(getCapitalGainsTransactionsQuery)
