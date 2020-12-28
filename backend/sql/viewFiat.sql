@@ -5,4 +5,4 @@ FROM kv
 WHERE key = 'currentFiat'
 UNION
 SELECT 'ZEUR' AS value
-LIMIT 
+LIMIT 1;
