@@ -12,4 +12,14 @@ const Card: ParentComponent<CardProps> = (props) => {
       classList={{ [props.outterClass ?? '']: true }}
     >
       <div class="mx-auto max-w-none">
-        
+        <div class="overflow-hidden bg-white dark:bg-black sm:rounded-lg sm:shadow">
+          <div classList={{ [props.innerClass ?? '']: true }}>
+            {props.children}
+          </div>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+export default Card
