@@ -71,4 +71,36 @@ export default function CapitalGains() {
                       isColored
                       options={{
                         style: 'currency',
-         
+                        currency: 'EUR',
+                        signDisplay: 'exceptZero',
+                      }}
+                    />
+                  </td>
+                </tr>
+              )}
+            </For>
+          </tbody>
+        </table>
+      </section>
+      <section class="bg-grey-50 max-w-full overflow-auto p-2">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <For
+                each={[
+                  'asset',
+                  'amount',
+                  'buy time',
+                  'sell time',
+                  'period',
+                  'buy price',
+                  'sell price',
+                  'gainloss',
+                ]}
+              >
+                {(name, i) => <th data-index={i()}>{name}</th>}
+              </For>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={data()?.capitalGainsTransactions}>
