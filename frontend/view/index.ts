@@ -12,4 +12,11 @@ type InitModelArgs = {
 
 export const initModel = ({ command, child }: InitModelArgs) => {
   model = createBirpc<ModelFunctions>(View, {
-    s
+    serialize: JSON.stringify,
+    deserialize: JSON.parse,
+    post: (data) => child.write(data),
+    on: (fn) => command.stdout.on('data', fn),
+    eventNames: ['updateLedgers', 'updateAll'],
+  })
+  return model
+}
