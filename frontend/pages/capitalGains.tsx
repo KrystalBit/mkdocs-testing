@@ -18,4 +18,32 @@ export default function CapitalGains() {
             options={{
               style: 'currency',
               currency: 'EUR',
-      
+            }}
+          />
+          <span class="text-xs">Total gain/loss</span>
+        </article>
+      </section>
+      <section class="bg-grey-100 max-w-full overflow-auto p-2">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <For
+                each={['asset', 'amount', 'avg. buy', 'avg. sell', 'gainloss']}
+              >
+                {(name, i) => <th data-index={i()}>{name}</th>}
+              </For>
+            </tr>
+          </thead>
+          <tbody>
+            <For each={data()?.capitalGainsSummary}>
+              {(row, i) => (
+                <tr data-index={i()}>
+                  <td>
+                    <Asset name={row.asset} class="w-24" />
+                  </td>
+                  <td>
+                    <FormattedNumber value={row.amount} />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                 
