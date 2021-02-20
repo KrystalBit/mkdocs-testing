@@ -104,3 +104,29 @@ export default function CapitalGains() {
           </thead>
           <tbody>
             <For each={data()?.capitalGainsTransactions}>
+              {(row, i) => (
+                <tr data-index={i()}>
+                  <td>
+                    <Asset name={row.asset} class="w-24" />
+                  </td>
+                  <td>
+                    <FormattedNumber value={row.amount} />
+                  </td>
+                  <td>
+                    <FormattedTime
+                      class="grow text-right"
+                      seconds={row.buy_time}
+                    />
+                  </td>{' '}
+                  <td>
+                    <FormattedTime
+                      class="grow text-right"
+                      seconds={row.sell_time}
+                    />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.holding_period}
+                    />
+                    
