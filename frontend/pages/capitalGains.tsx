@@ -46,4 +46,29 @@ export default function CapitalGains() {
                   </td>
                   <td>
                     <FormattedNumber
-                 
+                      class="grow text-right"
+                      value={row.avg_buy_price}
+                      options={{
+                        style: 'currency',
+                        currency: 'EUR',
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.avg_sell_price}
+                      options={{
+                        style: 'currency',
+                        currency: 'EUR',
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.gainloss}
+                      isColored
+                      options={{
+                        style: 'currency',
+         
