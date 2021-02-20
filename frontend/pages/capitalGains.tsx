@@ -154,4 +154,18 @@ export default function CapitalGains() {
                       value={row.gainloss}
                       isColored
                       options={{
-                        style: 'currency'
+                        style: 'currency',
+                        currency: 'EUR',
+                        signDisplay: 'exceptZero',
+                      }}
+                    />
+                  </td>
+                </tr>
+              )}
+            </For>
+          </tbody>
+        </table>
+      </section>
+    </Suspense>
+  )
+}
