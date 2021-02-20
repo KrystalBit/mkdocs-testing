@@ -129,4 +129,29 @@ export default function CapitalGains() {
                       class="grow text-right"
                       value={row.holding_period}
                     />
-                    
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.buy_price}
+                      options={{
+                        style: 'currency',
+                        currency: 'EUR',
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.sell_price}
+                      options={{
+                        style: 'currency',
+                        currency: 'EUR',
+                      }}
+                    />
+                  </td>
+                  <td>
+                    <FormattedNumber
+                      class="grow text-right"
+                      value={row.gainloss}
+                      isColored
+                      options={{
+                        style: 'currency'
