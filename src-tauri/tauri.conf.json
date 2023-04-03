@@ -42,4 +42,29 @@
         "providerShortName": null,
         "signingIdentity": null
       },
- 
+      "resources": [],
+      "shortDescription": "",
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": "default-src 'self'"
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "title": "Tentacle",
+        "width": 800
+      }
+    ]
+  }
+}
